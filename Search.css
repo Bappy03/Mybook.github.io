@@ -1,0 +1,47 @@
+#searchbar {
+    margin-left: 15%;
+    padding: 15px;
+    border-radius: 20px;
+    background: darkgrey;
+    outline: none;
+}
+
+input[type=text] {
+    width: 30%;
+    -webkit-transition: width 0.15s ease-in-out;
+    transition: width 0.15s ease-in-out;
+}
+
+/* When the input field gets focus, 
+		change its width to 100% */
+input[type=text]:focus {
+    width: 70%;
+}
+
+#list {
+    font-size: 30px;
+    margin-left: 90px;
+
+
+
+}
+
+.books {
+    display: list-item;
+}
+
+
+.line {
+    background: green;
+    height: 5px;
+    border-radius: 4px;
+    width: 0%;
+    position: fixed;
+    top: 0;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
