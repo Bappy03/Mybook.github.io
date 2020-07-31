@@ -2,1127 +2,649 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="index.css" />
-    <title>Booklist</title>
-    <style>
-        /* Navbar container */
-        .navbar {
-            overflow: hidden;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <title>Booklist</title>
+  <style>
+    /* Navbar container */
+    .navbar {
+      overflow: hidden;
 
-            font-family: Arial;
-        }
+      font-family: Arial;
+    }
 
-        /* Links inside the navbar */
-        .navbar a {
-            float: left;
-            font-size: 16px;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
+    /* Links inside the navbar */
+    .navbar a {
+      float: left;
+      font-size: 16px;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
 
-        /* The dropdown container */
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
+    /* The dropdown container */
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
 
-        /* Dropdown button */
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: rgb(102, 100, 100);
-            padding: 14px 16px;
-            background-color: inherit;
-            font: inherit;
-            /* Important for vertical align on mobile phones */
-            margin: 0;
-            /* Important for vertical align on mobile phones */
-        }
+    /* Dropdown button */
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: rgb(102, 100, 100);
+      padding: 14px 16px;
+      background-color: inherit;
+      font: inherit;
+      /* Important for vertical align on mobile phones */
+      margin: 0;
+      /* Important for vertical align on mobile phones */
+    }
 
-        /* Add a red background color to navbar links on hover */
-        .navbar a:hover,
-        .dropdown:hover .dropbtn {
-            color: black;
-        }
+    /* Add a red background color to navbar links on hover */
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      color: black;
+    }
 
-        /* Dropdown content (hidden by default) */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            width: 100%;
-            left: 0;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
+    /* Dropdown content (hidden by default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      width: 100%;
+      left: 0;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
 
-        /* Mega Menu header, if needed */
-        .dropdown-content .header {
-            background: red;
-            padding: 16px;
-            color: white;
-        }
+    /* Mega Menu header, if needed */
+    .dropdown-content .header {
+      background: red;
+      padding: 16px;
+      color: white;
+    }
 
-        /* Show the dropdown menu on hover */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-        /* Create three equal columns that floats next to each other */
-        .column {
-            float: left;
-            width: 33.33%;
-            padding: 10px;
-            background-color: #ccc;
-            height: 350px;
-        }
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      background-color: #ccc;
+      height: 350px;
+    }
 
-        /* Style links inside the columns */
-        .column a {
-            float: none;
-            color: black;
-            padding: 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
+    /* Style links inside the columns */
+    .column a {
+      float: none;
+      color: black;
+      padding: 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
 
-        /* Add a background color on hover */
-        .column a:hover {
-            background-color: #ddd;
-        }
+    /* Add a background color on hover */
+    .column a:hover {
+      background-color: #ddd;
+    }
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
 
-        @media screen and (max-width: 600px) {
-            .column {
-                width: 100%;
-                height: auto;
-            }
-        }
-    </style>
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header class="text-gray-700 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                    viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl"><a href="index.html">Booklist</a></span>
-            </a>
-            <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                <a href="সকল বই.html" class="mr-5 hover:text-gray-900">সকল বই</a>
-                <a href="#" class="mr-5 hover:text-gray-900">বিষয়ভিত্তিক বই</a>
-                <a href="#" class="mr-5 hover:text-gray-900">লেখক</a>
-                <a href="#" class="mr-5 hover:text-gray-900">প্রকাশক</a>
-                <div class="navbar">
-                    <div class="dropdown">
-                        <button class="dropbtn">মুল্যভিত্তিক বই
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <div class="row">
-                                <div class="column">
-                                    <a href="#">মুল্যঃ ১-৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ১০০-১৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ২০০-২৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ৩০০-৩৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ৪০০-৪৯৯ টাকা</a>
-                                </div>
-                                <div class="column">
-                                    <a href="#">মুল্যঃ ৫০০-৫৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ৬০০-৬৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ৭০০-৭৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ৮০০-৮৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ৯০০-৯৯৯ টাকা</a>
-                                </div>
-                                <div class="column">
-                                    <a href="#">মুল্যঃ ১০০০-১২৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ১৩০০- ১৪৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ১৫০০- ১৬৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ১৭০০- ১৯৯৯ টাকা</a>
-                                    <a href="#">মুল্যঃ ২০০০+ টাকা</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <button
-                class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
-                <a href="Search.html">সার্চ করুন</a>
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
+  <header class="text-gray-700 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+          viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl"><a href="index.html">Booklist</a></span>
+      </a>
+      <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+        <a href="সকল বই.html" class="mr-5 hover:text-gray-900">সকল বই</a>
+        <a href="#" class="mr-5 hover:text-gray-900">বিষয়ভিত্তিক বই</a>
+        <a href="#" class="mr-5 hover:text-gray-900">লেখক</a>
+        <a href="#" class="mr-5 hover:text-gray-900">প্রকাশক</a>
+        <div class="navbar">
+          <div class="dropdown">
+            <button class="dropbtn">
+              মুল্যভিত্তিক বই
+              <i class="fa fa-caret-down"></i>
             </button>
-        </div>
-    </header>
-    <section class="text-gray-700 body-font">
-        <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-wrap -m-4">
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="আত্মশুদ্ধি"
-                            class="object-cover object-center w-full h-full block" src="img/আত্মশুদ্ধি.jpg">
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            আত্মশুদ্ধি
-                        </h2>
-                        <p class="mt-1">লেখক : ইমাম আবূ আবদুর রহমান আস-সুলামী</p>
-                        <p class="mt-1">প্রকাশনী : মাকতাবাতুল বায়ান</p>
-                        <p class="mt-1">মূল্য : ৯২ টাকা</p>
-                    </div>
+            <div class="dropdown-content">
+              <div class="row">
+                <div class="column">
+                  <a href="#">মুল্যঃ ১-৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ১০০-১৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ২০০-২৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ৩০০-৩৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ৪০০-৪৯৯ টাকা</a>
                 </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="আল্লাহর উপর তাওয়াক্কুল"
-                            class="object-cover object-center w-full h-full block"
-                            src="img/আল্লাহর উপর তাওয়াক্কুল.jpeg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            আল্লাহর উপর তাওয়াক্কুল
-                        </h2>
-                        <p class="mt-1">লেখক : ইমাম ইবনু আবিদ দুনইয়া</p>
-                        <p class="mt-1">প্রকাশনী : মাকতাবাতুল বায়ান</p>
-                        <p class="mt-1">মূল্য : ৬৭ টাকা</p>
-                    </div>
+                <div class="column">
+                  <a href="#">মুল্যঃ ৫০০-৫৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ৬০০-৬৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ৭০০-৭৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ৮০০-৮৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ৯০০-৯৯৯ টাকা</a>
                 </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="কিয়ামুল লাইল"
-                            class="object-cover object-center w-full h-full block" src="img/কিয়ামুল লাইল.png" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            কিয়ামুল লাইল
-                        </h2>
-                        <p class="mt-1">লেখক : শাইখ আহমাদ মুসা জিবরিল</p>
-                        <p class="mt-1">প্রকাশনী : সমর্পণ প্রকাশন</p>
-                        <p class="mt-1">মূল্য : ৪৭ টাকা</p>
-                    </div>
+                <div class="column">
+                  <a href="#">মুল্যঃ ১০০০-১২৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ১৩০০- ১৪৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ১৫০০- ১৬৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ১৭০০- ১৯৯৯ টাকা</a>
+                  <a href="#">মুল্যঃ ২০০০+ টাকা</a>
                 </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="রাগ করবেন না-হাত বাড়ালেই জান্নাত"
-                            class="object-cover object-center w-full h-full block"
-                            src="img/রাগ করবেন না-হাত বাড়ালেই জান্নাত.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            রাগ করবেন না-হাত বাড়ালেই জান্নাত
-                        </h2>
-                        <p class="mt-1">লেখক : ড. মুহাম্মদ ইবনে আবদুর রহমান আরিফী</p>
-                        <p class="mt-1">প্রকাশনী : কালান্তর প্রকাশনী</p>
-                        <p class="mt-1">মূল্য : ৬০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="ইখলাস"
-                            class="object-cover object-center w-full h-full block" src="img/ইখলাস.png" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            ইখলাস
-                        </h2>
-                        <p class="mt-1">লেখক : মুহাম্মাদ সালেহ আল মুনাজ্জিদ</p>
-                        <p class="mt-1">প্রকাশনী : কালান্তর প্রকাশনী</p>
-                        <p class="mt-1">মূল্য : ৮০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="মাগফিরাতের পথ ও পাথেয়"
-                            class="object-cover object-center w-full h-full block"
-                            src="img/মাগফিরাতের পথ ও পাথেয়.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            মাগফিরাতের পথ ও পাথেয়
-                        </h2>
-                        <p class="mt-1">লেখক : ইমাম ইবনু রজব হাম্বলি (রহঃ)</p>
-                        <p class="mt-1">প্রকাশনী : শব্দতরু</p>
-                        <p class="mt-1">মূল্য : ৮০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="জান্নাতের চাবি"
-                            class="object-cover object-center w-full h-full block" src="img/জান্নাতের চাবি.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            জান্নাতের চাবি
-                        </h2>
-                        <p class="mt-1">লেখক : আব্দুল মালিক আল কাসিম</p>
-                        <p class="mt-1">প্রকাশনী : রুহামা পাবলিকেশন</p>
-                        <p class="mt-1">মূল্য : ৬৭ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="ইতিহাসের কাঠগড়ায় হযরত মু’আবিয়া রা."
-                            class="object-cover object-center w-full h-full block"
-                            src="img/ইতিহাসের কাঠগড়ায় হযরত মু’আবিয়া রা..jpeg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইসলামি ইতিহাস ও ঐতিহ্য, ইসলামি শাসনব্যবস্থা ও রাজনীতি, নবী-রাসূল ও সাহাবীদের জীবনী
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            ইতিহাসের কাঠগড়ায় হযরত মু’আবিয়া রা.
-                        </h2>
-                        <p class="mt-1">
-                            লেখক : শাইখুল ইসলাম মুফতী মুহাম্মাদ তাকী উসমানী</p>
-                        <p class="mt-1">প্রকাশনী : দারুল কলম</p>
-                        <p class="mt-1">মূল্য : ৭৫ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="ব্যস্ততার এ যুগে ইলম অন্বেষণ"
-                            class="object-cover object-center w-full h-full block"
-                            src="img/ব্যস্ততার এ যুগে ইলম অন্বেষণ.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইসলামী জ্ঞান চর্চা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            ব্যস্ততার এ যুগে ইলম অন্বেষণ
-                        </h2>
-                        <p class="mt-1">লেখক : মুহাম্মাদ সালেহ আল মুনাজ্জিদ</p>
-                        <p class="mt-1">প্রকাশনী : রুহামা পাবলিকেশন</p>
-                        <p class="mt-1">মূল্য : ৯৬ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="আল্লাহর পথে দা’ওয়াত"
-                            class="object-cover object-center w-full h-full block" src="img/আল্লাহর পথে দা’ওয়াত.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইসলামী জ্ঞান চর্চা, ঈমান আক্বিদা ও বিশ্বাস
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            আল্লাহর পথে দা’ওয়াত
-                        </h2>
-                        <p class="mt-1">লেখক : ড. খোন্দকার আব্দুল্লাহ জাহাঙ্গীর</p>
-                        <p class="mt-1">প্রকাশনী : আস-সুন্নাহ পাবলিকেশন্স</p>
-                        <p class="mt-1">মূল্য : ৫০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="পড়তে ভালোবাসি"
-                            class="object-cover object-center w-full h-full block" src="img/পড়তে ভালোবাসি.jpeg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইসলামী জ্ঞান চর্চা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            পড়তে ভালোবাসি
-                        </h2>
-                        <p class="mt-1">লেখক : ড. রাগেব সারজানী</p>
-                        <p class="mt-1">প্রকাশনী : মাকতাবাতুল হাসান</p>
-                        <p class="mt-1">মূল্য : ৬০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="মতবিরোধপূর্ণ বিষয়ে সঠিক পন্থা অবলম্বনের উপায়"
-                            class="object-cover object-center w-full h-full block"
-                            src="img/মতবিরোধপূর্ণ বিষয়ে সঠিক পন্থা অবলম্বনের উপায়.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইসলামী জ্ঞান চর্চা, ফিকাহ ও ফতওয়া
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            মতবিরোধপূর্ণ বিষয়ে সঠিক পন্থা অবলম্বনের উপায়
-                        </h2>
-                        <p class="mt-1">লেখক : শাহ ওয়ালীউল্লাহ দেহলাবী</p>
-                        <p class="mt-1">প্রকাশনী : বাংলাদেশ ইসলামিক সেন্টার</p>
-                        <p class="mt-1">মূল্য : ৮০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="রিযিক বন্টিত, চাই সুষ্ঠু কর্ম"
-                            class="object-cover object-center w-full h-full block"
-                            src="img/রিযিক বন্টিত, চাই সুষ্ঠু কর্ম.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ইসলামী জ্ঞান চর্চা
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            রিযিক বন্টিত, চাই সুষ্ঠু কর্ম
-                        </h2>
-                        <p class="mt-1">লেখক : শাইখ আলী তানতাভী</p>
-                        <p class="mt-1">প্রকাশনী : জাদীদ প্রকাশন</p>
-                        <p class="mt-1">মূল্য : ৬০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="তাওহিদের মর্মকথা"
-                            class="object-cover object-center w-full h-full block" src="img/তাওহিদের মর্মকথা.png" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            তাওহিদের মর্মকথা
-                        </h2>
-                        <p class="mt-1">লেখক : ইমাম ইবনু রজব হাম্বলি (রহঃ)</p>
-                        <p class="mt-1">প্রকাশনী : কালান্তর প্রকাশনী</p>
-                        <p class="mt-1">মূল্য : ৯০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="ঈমান ও আকীদা"
-                            class="object-cover object-center w-full h-full block" src="img/ঈমান ও আকীদা.jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            ঈমান ও আকীদা
-                        </h2>
-                        <p class="mt-1">লেখক : হযরত মাওলানা আশরাফ আলী থানভী চিশতী (রহঃ)</p>
-                        <p class="mt-1">প্রকাশনী : মাকতাবাতুল আশরাফ</p>
-                        <p class="mt-1">মূল্য : ৬০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="মিল্লাতে ইবরাহিমের জাগরণ"
-                            class="object-cover object-center w-full h-full block"
-                            src="img/মিল্লাতে ইবরাহিমের জাগরণ.png" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-                            মিল্লাতে ইবরাহিমের জাগরণ
-                        </h2>
-                        <p class="mt-1">লেখক : দিফায়ে মিল্লাতে ইবরাহিম</p>
-                        <p class="mt-1">প্রকাশনী : রুহামা পাবলিকেশন</p>
-                        <p class="mt-1">মূল্য : ৯০ টাকা</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img style="object-fit:contain;" alt="" class="object-cover object-center w-full h-full block"
-                            src="img/এক দিঘল দিনে নবিজি (সা.).jpg" />
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
-                            CATEGORY:
-                        </h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">
-
-                        </h2>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                        <p class="mt-1"></p>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </nav>
+      <button
+        class="inline-flex items-center bg-gray-200 border-0 py-1 px-3 focus:outline-none hover:bg-gray-300 rounded text-base mt-4 md:mt-0">
+        <a href="Search.html">সার্চ করুন</a>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <section class="text-gray-700 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap -m-4">
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="আত্মশুদ্ধি" class="object-cover object-center w-full h-full block"
+              src="img/আত্মশুদ্ধি.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              আত্মশুদ্ধি
+            </h2>
+            <p class="mt-1">লেখক : ইমাম আবূ আবদুর রহমান আস-সুলামী</p>
+            <p class="mt-1">প্রকাশনী : মাকতাবাতুল বায়ান</p>
+            <p class="mt-1">মূল্য : ৯২ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="আল্লাহর উপর তাওয়াক্কুল"
+              class="object-cover object-center w-full h-full block" src="img/আল্লাহর উপর তাওয়াক্কুল.jpeg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              আল্লাহর উপর তাওয়াক্কুল
+            </h2>
+            <p class="mt-1">লেখক : ইমাম ইবনু আবিদ দুনইয়া</p>
+            <p class="mt-1">প্রকাশনী : মাকতাবাতুল বায়ান</p>
+            <p class="mt-1">মূল্য : ৬৭ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="কিয়ামুল লাইল" class="object-cover object-center w-full h-full block"
+              src="img/কিয়ামুল লাইল.png" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              কিয়ামুল লাইল
+            </h2>
+            <p class="mt-1">লেখক : শাইখ আহমাদ মুসা জিবরিল</p>
+            <p class="mt-1">প্রকাশনী : সমর্পণ প্রকাশন</p>
+            <p class="mt-1">মূল্য : ৪৭ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="রাগ করবেন না-হাত বাড়ালেই জান্নাত"
+              class="object-cover object-center w-full h-full block" src="img/রাগ করবেন না-হাত বাড়ালেই জান্নাত.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              রাগ করবেন না-হাত বাড়ালেই জান্নাত
+            </h2>
+            <p class="mt-1">লেখক : ড. মুহাম্মদ ইবনে আবদুর রহমান আরিফী</p>
+            <p class="mt-1">প্রকাশনী : কালান্তর প্রকাশনী</p>
+            <p class="mt-1">মূল্য : ৬০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="ইখলাস" class="object-cover object-center w-full h-full block"
+              src="img/ইখলাস.png" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              ইখলাস
+            </h2>
+            <p class="mt-1">লেখক : মুহাম্মাদ সালেহ আল মুনাজ্জিদ</p>
+            <p class="mt-1">প্রকাশনী : কালান্তর প্রকাশনী</p>
+            <p class="mt-1">মূল্য : ৮০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="মাগফিরাতের পথ ও পাথেয়"
+              class="object-cover object-center w-full h-full block" src="img/মাগফিরাতের পথ ও পাথেয়.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইবাদত, আত্মশুদ্ধি ও অনুপ্রেরণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              মাগফিরাতের পথ ও পাথেয়
+            </h2>
+            <p class="mt-1">লেখক : ইমাম ইবনু রজব হাম্বলি (রহঃ)</p>
+            <p class="mt-1">প্রকাশনী : শব্দতরু</p>
+            <p class="mt-1">মূল্য : ৮০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="জান্নাতের চাবি"
+              class="object-cover object-center w-full h-full block" src="img/জান্নাতের চাবি.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY:
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              জান্নাতের চাবি
+            </h2>
+            <p class="mt-1">লেখক : আব্দুল মালিক আল কাসিম</p>
+            <p class="mt-1">প্রকাশনী : রুহামা পাবলিকেশন</p>
+            <p class="mt-1">মূল্য : ৬৭ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="ইতিহাসের কাঠগড়ায় হযরত মু’আবিয়া রা."
+              class="object-cover object-center w-full h-full block"
+              src="img/ইতিহাসের কাঠগড়ায় হযরত মু’আবিয়া রা..jpeg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামি ইতিহাস ও ঐতিহ্য, ইসলামি শাসনব্যবস্থা ও রাজনীতি,
+              নবী-রাসূল ও সাহাবীদের জীবনী
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              ইতিহাসের কাঠগড়ায় হযরত মু’আবিয়া রা.
+            </h2>
+            <p class="mt-1">
+              লেখক : শাইখুল ইসলাম মুফতী মুহাম্মাদ তাকী উসমানী
+            </p>
+            <p class="mt-1">প্রকাশনী : দারুল কলম</p>
+            <p class="mt-1">মূল্য : ৭৫ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="ব্যস্ততার এ যুগে ইলম অন্বেষণ"
+              class="object-cover object-center w-full h-full block" src="img/ব্যস্ততার এ যুগে ইলম অন্বেষণ.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামী জ্ঞান চর্চা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              ব্যস্ততার এ যুগে ইলম অন্বেষণ
+            </h2>
+            <p class="mt-1">লেখক : মুহাম্মাদ সালেহ আল মুনাজ্জিদ</p>
+            <p class="mt-1">প্রকাশনী : রুহামা পাবলিকেশন</p>
+            <p class="mt-1">মূল্য : ৯৬ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="আল্লাহর পথে দা’ওয়াত"
+              class="object-cover object-center w-full h-full block" src="img/আল্লাহর পথে দা’ওয়াত.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামী জ্ঞান চর্চা, ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              আল্লাহর পথে দা’ওয়াত
+            </h2>
+            <p class="mt-1">লেখক : ড. খোন্দকার আব্দুল্লাহ জাহাঙ্গীর</p>
+            <p class="mt-1">প্রকাশনী : আস-সুন্নাহ পাবলিকেশন্স</p>
+            <p class="mt-1">মূল্য : ৫০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="পড়তে ভালোবাসি"
+              class="object-cover object-center w-full h-full block" src="img/পড়তে ভালোবাসি.jpeg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামী জ্ঞান চর্চা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              পড়তে ভালোবাসি
+            </h2>
+            <p class="mt-1">লেখক : ড. রাগেব সারজানী</p>
+            <p class="mt-1">প্রকাশনী : মাকতাবাতুল হাসান</p>
+            <p class="mt-1">মূল্য : ৬০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="মতবিরোধপূর্ণ বিষয়ে সঠিক পন্থা অবলম্বনের উপায়"
+              class="object-cover object-center w-full h-full block"
+              src="img/মতবিরোধপূর্ণ বিষয়ে সঠিক পন্থা অবলম্বনের উপায়.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামী জ্ঞান চর্চা, ফিকাহ ও ফতওয়া
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              মতবিরোধপূর্ণ বিষয়ে সঠিক পন্থা অবলম্বনের উপায়
+            </h2>
+            <p class="mt-1">লেখক : শাহ ওয়ালীউল্লাহ দেহলাবী</p>
+            <p class="mt-1">প্রকাশনী : বাংলাদেশ ইসলামিক সেন্টার</p>
+            <p class="mt-1">মূল্য : ৮০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="রিযিক বন্টিত, চাই সুষ্ঠু কর্ম"
+              class="object-cover object-center w-full h-full block" src="img/রিযিক বন্টিত, চাই সুষ্ঠু কর্ম.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামী জ্ঞান চর্চা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              রিযিক বন্টিত, চাই সুষ্ঠু কর্ম
+            </h2>
+            <p class="mt-1">লেখক : শাইখ আলী তানতাভী</p>
+            <p class="mt-1">প্রকাশনী : জাদীদ প্রকাশন</p>
+            <p class="mt-1">মূল্য : ৬০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="তাওহিদের মর্মকথা"
+              class="object-cover object-center w-full h-full block" src="img/তাওহিদের মর্মকথা.png" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              তাওহিদের মর্মকথা
+            </h2>
+            <p class="mt-1">লেখক : ইমাম ইবনু রজব হাম্বলি (রহঃ)</p>
+            <p class="mt-1">প্রকাশনী : কালান্তর প্রকাশনী</p>
+            <p class="mt-1">মূল্য : ৯০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="ঈমান ও আকীদা" class="object-cover object-center w-full h-full block"
+              src="img/ঈমান ও আকীদা.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              ঈমান ও আকীদা
+            </h2>
+            <p class="mt-1">
+              লেখক : হযরত মাওলানা আশরাফ আলী থানভী চিশতী (রহঃ)
+            </p>
+            <p class="mt-1">প্রকাশনী : মাকতাবাতুল আশরাফ</p>
+            <p class="mt-1">মূল্য : ৬০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="মিল্লাতে ইবরাহিমের জাগরণ"
+              class="object-cover object-center w-full h-full block" src="img/মিল্লাতে ইবরাহিমের জাগরণ.png" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              মিল্লাতে ইবরাহিমের জাগরণ
+            </h2>
+            <p class="mt-1">লেখক : দিফায়ে মিল্লাতে ইবরাহিম</p>
+            <p class="mt-1">প্রকাশনী : রুহামা পাবলিকেশন</p>
+            <p class="mt-1">মূল্য : ৯০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="তাওহিদ প্রতিষ্ঠার সংগ্রামে"
+              class="object-cover object-center w-full h-full block" src="img/তাওহিদ প্রতিষ্ঠার সংগ্রামে.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              তাওহিদ প্রতিষ্ঠার সংগ্রামে
+            </h2>
+            <p class="mt-1">লেখক : সায়্যিদ আবুল হাসান আলি নদবি রহ.</p>
+            <p class="mt-1">প্রকাশনী : শব্দতরু প্রকাশন</p>
+            <p class="mt-1">মূল্য : ৯৬ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="সরল তাওহীদ" class="object-cover object-center w-full h-full block"
+              src="img/সরল তাওহীদ.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              সরল তাওহীদ
+            </h2>
+            <p class="mt-1">লেখক : আবদুল্লাহ বিন আহমাদ আল হুওয়াইল</p>
+            <p class="mt-1">প্রকাশনী : তাওহীদ পাবলিকেশন্স</p>
+            <p class="mt-1">মূল্য : ৬০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="লা ইলাহা ইল্লাল্লাহ শর্ত ও ভঙ্গকারী বিষয়সমূহ"
+              class="object-cover object-center w-full h-full block"
+              src="img/লা ইলাহা ইল্লাল্লাহ শর্ত ও ভঙ্গকারী বিষয়সমূহ.png" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              লা ইলাহা ইল্লাল্লাহ শর্ত ও ভঙ্গকারী বিষয়সমূহ
+            </h2>
+            <p class="mt-1">লেখক : শাইখ ইবনু বায</p>
+            <p class="mt-1">প্রকাশনী : মাকতাবাতুস সুন্নাহ</p>
+            <p class="mt-1">মূল্য : ২০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="আল্লাহর পথে দা’ওয়াত"
+              class="object-cover object-center w-full h-full block" src="img/আল্লাহর পথে দা’ওয়াত.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামী জ্ঞান চর্চা, ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium"></h2>
+            <p class="mt-1">লেখক : ড. খোন্দকার আব্দুল্লাহ জাহাঙ্গীর</p>
+            <p class="mt-1">প্রকাশনী : আস-সুন্নাহ পাবলিকেশন্স</p>
+            <p class="mt-1">মূল্য : ৫০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="আল আক্বীদা আত-ত্বহাবীয়া"
+              class="object-cover object-center w-full h-full block" src="img/আল আক্বীদা আত-ত্বহাবীয়া.png" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY:ঈমান আক্বিদা ও বিশ্বাস
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              আল আক্বীদা আত-ত্বহাবীয়া
+            </h2>
+            <p class="mt-1">লেখক : ইমাম আবু জাফর আহম্মদ অত-তাহাবী র.</p>
+            <p class="mt-1">প্রকাশনী : মাকতাবাতুস সুন্নাহ</p>
+            <p class="mt-1">মূল্য : ২০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="আল কুরআন এক মহাবিস্ময়"
+              class="object-cover object-center w-full h-full block" src="img/আল কুরআন এক মহাবিস্ময়.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: কুরআন বিষয়ক আলোচনা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              আল কুরআন এক মহাবিস্ময়
+            </h2>
+            <p class="mt-1">লেখক : ড. মরিস বুকাইলি</p>
+            <p class="mt-1">প্রকাশনী : বাংলাদেশ ইসলামিক সেন্টার</p>
+            <p class="mt-1">মূল্য : ৮০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="কুরআন বুঝার পথ ও পাথেয়"
+              class="object-cover object-center w-full h-full block" src="img/কুরআন বুঝার পথ ও পাথেয়.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: কুরআন বিষয়ক আলোচনা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              কুরআন বুঝার পথ ও পাথেয়
+            </h2>
+            <p class="mt-1">লেখক : মাওলানা আবদুস শহীদ নাসিম</p>
+            <p class="mt-1">প্রকাশনী : শতাব্দী প্রকাশনী</p>
+            <p class="mt-1">মূল্য : ৮০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="ধর্মে বাড়াবাড়ি"
+              class="object-cover object-center w-full h-full block" src="img/ধর্মে বাড়াবাড়ি.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামি গবেষণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              ধর্মে বাড়াবাড়ি
+            </h2>
+            <p class="mt-1">লেখক : ড. মুহাম্মাদ কাবীরুল ইসলাম</p>
+            <p class="mt-1">প্রকাশনী : হাদীছ ফাউণ্ডেশন বাংলাদেশ</p>
+            <p class="mt-1">মূল্য : ১৮ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="আহলেহাদীছ একটি বৈশিষ্ট্যগত নাম"
+              class="object-cover object-center w-full h-full block" src="img/আহলেহাদীছ একটি বৈশিষ্ট্যগত নাম.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামি গবেষণা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              আহলেহাদীছ একটি বৈশিষ্ট্যগত নাম
+            </h2>
+            <p class="mt-1">লেখক : শাইখ যুবাইর আলী যাই</p>
+            <p class="mt-1">প্রকাশনী : হাদীছ ফাউন্ডেশন বাংলাদেশ</p>
+            <p class="mt-1">মূল্য : ৫০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="ইসলামী পুনর্জাগরণ, পথ ও পদ্ধতি"
+              class="object-cover object-center w-full h-full block" src="img/ইসলামী পুনর্জাগরণ, পথ ও পদ্ধতি.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামি শাসনব্যবস্থা ও রাজনীতি
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              ইসলামী পুনর্জাগরণ, পথ ও পদ্ধতি
+            </h2>
+            <p class="mt-1">লেখক : মুহাম্মাদ ইবনু সালেহ আল উসাইমীন</p>
+            <p class="mt-1">প্রকাশনী : হাদীছ ফাউণ্ডেশন বাংলাদেশ</p>
+            <p class="mt-1">মূল্য : ৫০ টাকা</p>
+          </div>
+        </div>
+        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img style="object-fit: contain;" alt="উলামার মতানৈক্য ও আমাদের কর্তব্য"
+              class="object-cover object-center w-full h-full block" src="img/উলামার মতানৈক্য ও আমাদের কর্তব্য.jpg" />
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">
+              CATEGORY: ইসলামী জ্ঞান চর্চা
+            </h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">
+              উলামার মতানৈক্য ও আমাদের কর্তব্য
+            </h2>
+            <p class="mt-1">লেখক : শাইখ ইবনু উসাইমীন</p>
+            <p class="mt-1">প্রকাশনী : তাওহীদ পাবলিকেশন্স</p>
+            <p class="mt-1">মূল্য : ৩০ টাকা</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>
